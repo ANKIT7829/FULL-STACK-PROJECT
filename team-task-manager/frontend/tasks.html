@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Task Manager - My Tasks</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">Team Task Manager</div>
+            <div class="nav-menu">
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="projects.html" class="nav-link">Projects</a>
+                <a href="tasks.html" class="nav-link active">My Tasks</a>
+                <div class="nav-user">
+                    <span id="userName"></span>
+                    <button id="logoutBtn" class="btn btn-secondary btn-small">Logout</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="page-header">
+            <h1>My Tasks</h1>
+            <div class="task-filters">
+                <select id="statusFilter" class="form-control">
+                    <option value="">All Status</option>
+                    <option value="todo">To Do</option>
+                    <option value="in_progress">In Progress</option>
+                    <option value="done">Done</option>
+                </select>
+                <select id="projectFilterTasks" class="form-control">
+                    <option value="">All Projects</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Tasks Table -->
+        <div class="section">
+            <table class="tasks-table">
+                <thead>
+                    <tr>
+                        <th>Task</th>
+                        <th>Project</th>
+                        <th>Status</th>
+                        <th>Due Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="myTasksTableBody">
+                    <!-- Tasks will be loaded here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Task Edit Modal -->
+    <div id="taskEditModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Task</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <form id="taskEditForm">
+                <div class="form-group">
+                    <label for="editTaskTitle">Title:</label>
+                    <input type="text" id="editTaskTitle" name="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="editTaskDescription">Description:</label>
+                    <textarea id="editTaskDescription" name="description"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="editTaskStatus">Status:</label>
+                    <select id="editTaskStatus" name="status" required>
+                        <option value="todo">To Do</option>
+                        <option value="in_progress">In Progress</option>
+                        <option value="done">Done</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="editTaskDueDate">Due Date:</label>
+                    <input type="date" id="editTaskDueDate" name="due_date">
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Update Task</button>
+                    <button type="button" class="btn btn-secondary close-modal-btn">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/tasks.js"></script>
+</body>
+</html>
